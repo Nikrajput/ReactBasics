@@ -16,4 +16,30 @@
 
 
 2. createContext can be used for creating global variables
-   i.e. by using createContext variables that we create are available to all the nested components 
+   i.e. by using createContext variables that we create are available to all the nested components
+
+3. window.addEventListener can be used when we need to keep track of changes in window
+
+4. useEffect(function,optional argument which is an array)
+   when we pass an empty array this means we only want to run this effect once when this component mounts.
+   And we pass the values in the array in such a way that our logic inside the effect get a call on 
+   the first render or change of these values.
+   
+   Always return a function from useEffect in order to clear up the previous effect
+   In that return function, we should abort all the calls that we are making like api call, eventListener.
+
+   Example 
+    useEffect(() => {
+        let canceled = false;
+        setLoading(true);
+        fakeFetch(person).then(data => {
+        if (!canceled) { -> in order to avoid the race condition 
+            setData(data);
+            setLoading(false);
+        }
+        });
+        return () =>{
+            canceled=true;
+            Abort API Call/RemoveEventListener;
+        };
+    }, [person]);  
