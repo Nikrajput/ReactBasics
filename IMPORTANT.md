@@ -2,6 +2,13 @@
 
 -> npx create-react-app .      [. is for running the app in the same folder]
 
+-> @import-normalize; [in css it takes care different defaults in different browser]
+
+
+## Useful Extensions
+
+1. ES7+ React/Redux/React-Native/JS snippets
+
 ## Important Point
 
 1.  setState, useState are async function
@@ -42,4 +49,8 @@
             canceled=true;
             Abort API Call/RemoveEventListener;
         };
-    }, [person]);  
+    }, [person]);
+
+5. While rendering a array in react always pass an key which is unique because this will only render that part only not the whole array.
+
+6. {...} spread operators are used in order to pass as it is.
